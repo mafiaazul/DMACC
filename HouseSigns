@@ -1,0 +1,28 @@
+start
+    final num MIN_CHARGE = 30
+    final num OAK_FEE = 15
+    final num LETTER_THRESHOLD = 6
+    final num ADDITIONAL_CHAR = 3
+    final num GOLD_LEAF_FEE = 12
+    final string SPECIAL_COLOR = "Gold-Leaf"
+    string orderNumber = ""
+    string name = ""
+    string woodType = "Pine"
+    string colorOfCharacter = ""
+    num numOfCharacter = 0
+    num extraCharacters = 0
+    num finalPrice = 0
+
+    Output "Enter order number: "
+    Input orderNumber
+    Output "Enter customer's name: "
+    Input name
+    Output "Enter wood type: "
+    Input woodType
+    Output "Enter number of characters: "
+    Input numOfCharacter
+    Output "Enter color of characters: "
+    Input colorOfCharacter
+
+    if (numOfCharacter > 6)
+        

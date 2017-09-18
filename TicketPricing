@@ -1,0 +1,47 @@
+start
+
+    Declaration
+        num sectionNumber = 0
+        num finalTicketPrice = 0
+        string affiliation = “”
+        string hasAffiliation = ""
+        final num ALUMNNI = 0.1
+        final num FACULTY = 0.25
+        final num STUDENT = 0.5
+        final num YELLOW_SECTION = 5
+        final num PINK_SECTION = 10
+        final num ORANGE_SECTION = 15
+        final num BASE_PRICE = 49
+
+    Output “Enter section number: “
+    Input sectionNumber
+    Output “Are you affiliated? Y/N: “
+    Input hasAffiliation
+    if (hasAffiliation == "Y")
+        Output "Enter affiliation name: "
+        Input affiliation
+    endif
+
+    if (
+        ( (sectionNumber >= 01) AND (sectionNumber <= 09) ) OR
+        ( (sectionNumber >= 11) AND (sectionNumber <= 13) ) OR
+        ( (sectionNumber >= 15) AND (sectionNumber <= 16) )
+       )
+        finalTicketPrice = BASE_PRICE + YELLOW_SECTION
+    else if ( (sectionNumber >= 17) AND (sectionNumber <= 20) )
+        finalTicketPrice = BASE_PRICE + PINK_SECTION
+    else if ( (sectionNumber == 10) )
+        finalTicketPrice = BASE_PRICE + ORANGE_SECTION
+    endif
+    
+    if (affiliation == "alumni")
+        finalTicketPrice = finalTicketPrice - (finalTicketPrice * ALUMNNI)
+    else if (affiliation == "faculty")
+        finalTicketPrice = finalTicketPrice - (finalTicketPrice * FACULTY)
+    else if (affiliation == "student")
+        finalTicketPrice = finalTicketPrice - (finalTicketPrice * STUDENT)
+    endif
+
+    Output "Your final price is: " + finalTicketPrice
+
+end

@@ -1,0 +1,41 @@
+start
+    Declarations
+        final num BASIC_RATE = 5
+        final num MAX_THRESHOLD_START = 180
+        final num MAX_THRESHOLD_PRICE_PER_MESSAGE = 0.10
+        final num MED_THRESHOLD_START = 60
+        final num MED_THRESHOLD_PRICE_PER_MESSAGE = 0.05
+        final num TAX_RATE = 0.12
+        num medMaxCharge = (MAX_THRESHOLD_START - MED_THRESHOLD_START) * MED_THRESHOLD_PRICE_PER_MESSAGE
+        string areaCode = ""
+        string phoneNumber = ""
+        num msgCount = 0
+        num totalBill = 0
+        num taxAmount = 0
+        num totalBillWithTax = 0
+
+    Output "Please enter area code: "
+    Input areaCode
+    Output "Please enter phone number: "
+    Input phoneNumber
+    Output "Please enter number of messages: "
+    Input msgCount
+
+    if (msgCount > MAX_THRESHOLD_START)
+        totalBill = ((msgCount - MAX_THRESHOLD_START) * MAX_THRESHOLD_PRICE_PER_MESSAGE) + 
+                    medMaxCharge + BASIC_RATE
+    else if (msgCount > MED_THRESHOLD_START)
+        totalBill = ((msgCount - MED_THRESHOLD_START) * MED_THRESHOLD_PRICE_PER_MESSAGE) +
+                    BASIC_RATE
+    else 
+        totalBill = BASIC_RATE
+    endif
+
+    taxAmount = totalBill * TAX_RATE
+    totalBillWithTax = taxAmount + totalBill
+
+    Output "Your total bill before taxes is: " + totalBill
+    Output "Your total taxes are: " + taxAmount
+    Output "Your total bill including taxes is: " + totalBillWithTax
+    
+stop
