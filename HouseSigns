@@ -5,12 +5,13 @@ start
     final num ADDITIONAL_CHAR = 3
     final num GOLD_LEAF_FEE = 12
     final string SPECIAL_COLOR = "Gold-Leaf"
+    final string SPECIAL_WOOD = "Oak"
     string orderNumber = ""
     string name = ""
-    string woodType = "Pine"
+    string woodType = ""
     string colorOfCharacter = ""
     num numOfCharacter = 0
-    num extraCharacters = 0
+    num extraCharactersCharge = 0
     num finalPrice = 0
 
     Output "Enter order number: "
@@ -24,5 +25,27 @@ start
     Output "Enter color of characters: "
     Input colorOfCharacter
 
-    if (numOfCharacter > 6)
+    if (numOfCharacter > LETTER_THRESHOLD)
+        finalPrice = (numOfCharacter - LETTER_THRESHOLD) * ADDITIONAL_CHAR
+    end if
+    if (woodType == SPECIAL_WOOD)
+        finalPrice = finalPrice + OAK_FEE
+    endif
+    if (colorOfCharacter == SPECIAL_COLOR)
+        finalPrice = finalPrice + GOLD_LEAF_FEE
+    endif
+    
+    if (finalPrice <= MIN_CHARGE)
+        finalPrice = MIN_CHARGE
+    endif
+    
+    Output "Order Number :" + orderNumber
+    Output "Name :" + name
+    Output "Type of wood: " + woodType
+    Output "Color of characters chosen: " + colorOfCharacter
+    Output "Final price: " + finalPrice
+
+stop
+
+
         
