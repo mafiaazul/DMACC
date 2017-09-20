@@ -7,6 +7,8 @@ start
         final num MED_THRESHOLD_PRICE_PER_MESSAGE = 0.05
         final num TAX_RATE = 0.12
         num medMaxCharge = (MAX_THRESHOLD_START - MED_THRESHOLD_START) * MED_THRESHOLD_PRICE_PER_MESSAGE
+        num overMaxCharge = 0
+        num overMedCharge = 0
         string areaCode = ""
         string phoneNumber = ""
         num msgCount = 0
@@ -24,15 +26,19 @@ start
     if (msgCount > MAX_THRESHOLD_START)
         totalBill = ((msgCount - MAX_THRESHOLD_START) * MAX_THRESHOLD_PRICE_PER_MESSAGE) + 
                     medMaxCharge + BASIC_RATE
+        overMaxCharge = 1
     else if (msgCount > MED_THRESHOLD_START)
         totalBill = ((msgCount - MED_THRESHOLD_START) * MED_THRESHOLD_PRICE_PER_MESSAGE) +
                     BASIC_RATE
+        overMedCharge = 1
     else 
         totalBill = BASIC_RATE
     endif
 
     taxAmount = totalBill * TAX_RATE
     totalBillWithTax = taxAmount + totalBill
+
+    if (
 
     Output "Your total bill before taxes is: " + totalBill
     Output "Your total taxes are: " + taxAmount
